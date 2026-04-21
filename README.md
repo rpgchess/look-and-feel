@@ -65,14 +65,42 @@ look-and-feel/
 - **JDK 8+**
 - **Maven** ou **Gradle** (para dependências de terceiros)
 
-### Compilação
+### Compilação e Execução
+
+### Opção 1: Linha de Comando
 
 ```bash
 # Compilar
-javac -d bin src/*.java
+javac -d bin src/**/*.java
 
 # Executar
 java -cp bin Main
+```
+
+### Opção 2: Com Maven
+
+```bash
+# Build
+mvn clean compile
+
+# Executar
+mvn exec:java -Dexec.mainClass="Main"
+
+# Empacotar com dependências
+mvn clean package assembly:single
+```
+
+### Opção 3: Com Gradle
+
+```bash
+# Build
+gradle build
+
+# Executar
+gradle run
+
+# JAR executável
+gradle jar
 ```
 
 ### Com Maven
@@ -221,6 +249,39 @@ A aplicação demonstra os seguintes componentes:
 - [FlatLaf](https://www.formdev.com/flatlaf/)
 - [JTattoo](http://www.jtattoo.net/)
 - [Substance](https://github.com/kirill-grouchnikov/radiance)
+- [UIManager API](https://docs.oracle.com/javase/8/docs/api/javax/swing/UIManager.html)
+
+## 💡 Conceitos Demonstrados
+
+- **UIManager**: Gerenciamento global de Look and Feel
+- **Pluggable Look and Feel (PLAF)**: Arquitetura de temas do Swing
+- **SwingUtilities.updateComponentTreeUI()**: Atualização dinâmica
+- **UIDefaults**: Customização de propriedades visuais
+- **Runtime theme switching**: Troca de temas sem reiniciar
+
+## ⚙️ Melhorias Implementadas
+
+### ✅ Configuração
+- **EditorConfig** adicionado para encoding UTF-8
+- Indentação Java configurada (tabs, 4 espaços)
+
+### ✅ Documentação
+- README expandido com 6 exemplos de código
+- Múltiplas opções de build (Maven, Gradle, CLI)
+- Tabela comparativa de temas
+- Dependências Maven atualizadas (FlatLaf 3.2.5, JTattoo 1.6.13)
+- Lista completa de componentes demonstrados
+- Customização de cores explicada
+- Runtime theme switching documentado
+
+## 🚀 Melhorias Futuras
+
+- [ ] Interface gráfica para seleção de temas
+- [ ] Salvar preferências do usuário
+- [ ] Preview lado a lado de múltiplos temas
+- [ ] Export de configuração customizada
+- [ ] Suporte para temas personalizados
+- [ ] Integração com JavaFX (via JFXPanel)
 
 ## 👨‍💻 Autor
 
